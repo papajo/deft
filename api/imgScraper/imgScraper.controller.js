@@ -2,7 +2,7 @@
 
 var scrapers = {};
 
-scrapers['pinterest'] = require('./scrapers/pinterest.js');
+scrapers['pinterest'] = require('./scraper/pinterest.js');
 
 exports.scrape = function(req, res){
   var url = req.body.url;
@@ -15,7 +15,7 @@ exports.scrape = function(req, res){
   }
 
   scrapers[scraperToUse].list(url, function(data) {
-    console.log('data from scraper': data);
+    console.log('data from scraper: ' + data);
     res.json(data);
   })
 }
